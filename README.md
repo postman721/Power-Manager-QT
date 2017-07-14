@@ -15,6 +15,9 @@ The list below should be enough:
 
 python3 python-pyqt5 python-minimal
 
+Additional dependencies:This tool has Openbox integrations in it. Screen locking uses i3lock program.
+
+
 Run the program via terminal like this: python something.py
 
 If needed make the program executable with: chmod +x something.py
