@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
-#Power manager-QT v.5.1 Copyright (c) 2017 JJ Posti <techtimejourney.net> 
+#Power manager-QT v.6 Copyright (c) 2017 JJ Posti <techtimejourney.net> 
 #This is a power manager application.The program comes with ABSOLUTELY NO WARRANTY; 
 #for details see: http://www.gnu.org/copyleft/gpl.html. 
 #This is free software, and you are welcome to redistribute it under 
@@ -26,7 +26,7 @@ except AttributeError:
         return QApplication.translate(context, text, disambig)
 
 class Ui_power_manager(object):
-	#Shutdown function
+#Shutdown function
     def powe(self,widget):
         subprocess.Popen(['gksudo', 'poweroff'])
 #Reboot function
@@ -53,32 +53,43 @@ class Ui_power_manager(object):
         power_manager.setObjectName(_fromUtf8("power_manager"))
         power_manager.setFixedSize(330, 175)
 
+        power_manager.setStyleSheet("background-color:#575656; border: 2px solid #353535; border-radius: 3px;font-size: 12px;")
         self.gridLayout = QGridLayout(power_manager)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         
         self.lock = QPushButton(power_manager)
+        self.lock.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
+        "QPushButton:hover{background-color:#5c5c5c;}")   
         self.lock.setObjectName(_fromUtf8("lock"))
         self.verticalLayout.addWidget(self.lock)
         self.lock.clicked.connect(self.lockme)
         
         self.out = QPushButton(power_manager)
+        self.out.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
+        "QPushButton:hover{background-color:#5c5c5c;}")   
         self.out.setObjectName(_fromUtf8("out"))
         self.verticalLayout.addWidget(self.out)
         self.out.clicked.connect(self.out1)
 
         self.suspend = QPushButton(power_manager)
+        self.suspend.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
+        "QPushButton:hover{background-color:#5c5c5c;}")   
         self.suspend.setObjectName(_fromUtf8("suspend"))
         self.verticalLayout.addWidget(self.suspend)
         self.suspend.clicked.connect(self.sus)
 
         self.reboot = QPushButton(power_manager)
+        self.reboot.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
+        "QPushButton:hover{background-color:#5c5c5c;}")   
         self.reboot.setObjectName(_fromUtf8("reboot"))
         self.verticalLayout.addWidget(self.reboot)
         self.reboot.clicked.connect(self.reb)
 
         self.shut = QPushButton(power_manager)
+        self.shut.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
+        "QPushButton:hover{background-color:#5c5c5c;}")   
         self.shut.setObjectName(_fromUtf8("shut"))
         self.verticalLayout.addWidget(self.shut)
         self.shut.clicked.connect(self.powe)
