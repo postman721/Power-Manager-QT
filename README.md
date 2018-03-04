@@ -5,9 +5,11 @@ Power manager program written with Python and Qt5
 ______________________
 
 
-#Power manager-QT v.6 Copyright (c) 2017 JJ Posti <techtimejourney.net>
+#Power manager-QT v.7 Copyright (c) 2017 JJ Posti <techtimejourney.net>
 #This is a power manager application.The program comes with ABSOLUTELY NO WARRANTY;  #for details see: http://www.gnu.org/copyleft/gpl.html. #This is free software, and you are welcome to redistribute it under
 #GPL Version 2, June 1991 This is the QT5 version” )
+
+V.7 is a bug-fix release.
 
 Notable change in v.6: Power Manager has a new outlook done with CSS.
 
