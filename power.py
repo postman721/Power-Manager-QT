@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python
-#Power manager-QT v.6 Copyright (c) 2017 JJ Posti <techtimejourney.net> 
+#!/usr/bin/env python3
+#Power manager-QT v.7 Copyright (c) 2017 JJ Posti <techtimejourney.net> 
 #This is a power manager application.The program comes with ABSOLUTELY NO WARRANTY; 
 #for details see: http://www.gnu.org/copyleft/gpl.html. 
 #This is free software, and you are welcome to redistribute it under 
@@ -28,13 +28,24 @@ except AttributeError:
 class Ui_power_manager(object):
 #Shutdown function
     def powe(self,widget):
-        subprocess.Popen(['gksudo', 'poweroff'])
+        try:
+            subprocess.Popen(['gksudo', 'poweroff'])
+        except Exception as e:
+            print("Error: gksudo not installed.")
+
 #Reboot function
     def reb(self,widget):
-        subprocess.Popen(['gksudo', 'reboot'])
+        try:
+            subprocess.Popen(['gksudo', 'reboot'])
+        except Exception as e:
+            print("Error: gksudo not installed.")
 #Suspend function
     def sus(self,widget):
-        subprocess.Popen(['gksudo', 'pm-suspend'])        
+        try:
+            subprocess.Popen(['gksudo', 'pm-suspend'])        
+        except Exception as e:
+            print("Error: gksudo not installed.")
+
 #Logout function
     def out1(self, event):        
         reply = QMessageBox.question(None, 'Message',
@@ -47,8 +58,11 @@ class Ui_power_manager(object):
             pass                            
 #Lock screen
     def lockme(self,widget):
-        subprocess.Popen(['i3lock', '-c', '202020', '-n'])  
-		
+        try:
+            subprocess.Popen(['i3lock', '-c', '202020', '-n'])  
+        except Exception as e:
+            print("Error i3clock is not installed.")
+			
     def setupUi(self, power_manager):
         power_manager.setObjectName(_fromUtf8("power_manager"))
         power_manager.setFixedSize(330, 175)
