@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python3
-#Power manager-QT v.7 Copyright (c) 2017 JJ Posti <techtimejourney.net> 
+#Power manager-QT v.8 Copyright (c) 2017 JJ Posti <techtimejourney.net> 
 #This is a power manager application.The program comes with ABSOLUTELY NO WARRANTY; 
 #for details see: http://www.gnu.org/copyleft/gpl.html. 
 #This is free software, and you are welcome to redistribute it under 
@@ -25,31 +25,41 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QApplication.translate(context, text, disambig)
 
-class Ui_power_manager(object):
+class Ui_power_manager(QMainWindow):
 #Shutdown function
     def powe(self,widget):
-        try:
-            subprocess.Popen(['gksudo', 'poweroff'])
-        except Exception as e:
-            print("Error: gksudo not installed.")
+        reply = QMessageBox.question(None, 'Message',
+            "Shutdown computer?", QMessageBox.Yes | 
+            QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            subprocess.Popen(['systemctl', 'poweroff'])    
+        if reply == QMessageBox.No:            
+            pass            
 
 #Reboot function
     def reb(self,widget):
-        try:
-            subprocess.Popen(['gksudo', 'reboot'])
-        except Exception as e:
-            print("Error: gksudo not installed.")
+        reply = QMessageBox.question(None, 'Message',
+            "Reboot computer?", QMessageBox.Yes | 
+            QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            subprocess.Popen(['systemctl', 'reboot'])    
+        if reply == QMessageBox.No:            
+            pass            
+            
 #Suspend function
     def sus(self,widget):
-        try:
-            subprocess.Popen(['gksudo', 'pm-suspend'])        
-        except Exception as e:
-            print("Error: gksudo not installed.")
+        reply = QMessageBox.question(None, 'Message',
+            "Suspend computer?", QMessageBox.Yes | 
+            QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            subprocess.Popen(['systemctl', 'suspend'])    
+        if reply == QMessageBox.No:            
+            pass            
 
 #Logout function
     def out1(self, event):        
         reply = QMessageBox.question(None, 'Message',
-            "Are you sure to quit?", QMessageBox.Yes | 
+            "Quit desktop?", QMessageBox.Yes | 
             QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
@@ -65,20 +75,21 @@ class Ui_power_manager(object):
 			
     def setupUi(self, power_manager):
         power_manager.setObjectName(_fromUtf8("power_manager"))
-        power_manager.setFixedSize(330, 175)
-
+        power_manager.setFixedSize(280, 125)
+        power_manager.move(QApplication.desktop().screen().rect().center()- self.rect().center())
         power_manager.setStyleSheet("background-color:#575656; border: 2px solid #353535; border-radius: 3px;font-size: 12px;")
         self.gridLayout = QGridLayout(power_manager)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+#Disable lock button for now.
         
-        self.lock = QPushButton(power_manager)
-        self.lock.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
-        "QPushButton:hover{background-color:#5c5c5c;}")   
-        self.lock.setObjectName(_fromUtf8("lock"))
-        self.verticalLayout.addWidget(self.lock)
-        self.lock.clicked.connect(self.lockme)
+        #self.lock = QPushButton(power_manager)
+        #self.lock.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
+        #"QPushButton:hover{background-color:#5c5c5c;}")   
+        #self.lock.setObjectName(_fromUtf8("lock"))
+        #self.verticalLayout.addWidget(self.lock)
+        #self.lock.clicked.connect(self.lockme)
         
         self.out = QPushButton(power_manager)
         self.out.setStyleSheet("QPushButton{color:#ffffff; background-color:#353535; border: 2px solid #353535; border-radius: 3px;font-size: 12px;}"
@@ -115,7 +126,8 @@ class Ui_power_manager(object):
 
     def retranslateUi(self, power_manager):
         power_manager.setWindowTitle(_translate("power_manager", "Power Manager", None))
-        self.lock.setText(_translate("power_manager", "Lock screen", None))
+        #Disable lock button
+        #self.lock.setText(_translate("power_manager", "Lock screen", None))
         self.out.setText(_translate("power_manager", "Logout ", None))
         self.suspend.setText(_translate("power_manager", "Suspend", None))
         self.reboot.setText(_translate("power_manager", "Reboot", None))
