@@ -1,15 +1,16 @@
 # Power-Manager-QT
-Power manager program written with Python and Qt5
+Power manager program written with Python and Qt5 
 
-![power_6](https://user-images.githubusercontent.com/29865797/29340316-0a04779c-8227-11e7-998b-68afd9134ef9.jpg)
-______________________
+![power](https://user-images.githubusercontent.com/29865797/194307561-1f9451fe-5597-4276-b1d3-5e4248092b38.png)______________________
 
 
-#Power manager-QT v.7 Copyright (c) 2017 JJ Posti <techtimejourney.net>
+#Power manager-QT v.8 Copyright (c) 2017 JJ Posti <techtimejourney.net>
 #This is a power manager application.The program comes with ABSOLUTELY NO WARRANTY;  #for details see: http://www.gnu.org/copyleft/gpl.html. #This is free software, and you are welcome to redistribute it under
 #GPL Version 2, June 1991 This is the QT5 version” )
 
-V.7 is a bug-fix release.
+V.8 is a bug-fix release.
+
+Power-Manager QT is upgraded to support systemctl commannds. Also, has Are you sure dialogs on every entry now. Logout is for Openbox.
 
 Notable change in v.6: Power Manager has a new outlook done with CSS.
 
@@ -17,7 +18,7 @@ Dependencies:
 
 The list below should be enough:
 
-python3 python-pyqt5 python-minimal gksudo
+python3 python-pyqt5 python-minimal
 
 Additional dependencies for Power-Manager:This tool has Openbox integrations in it. Logout assumes Openbox installed. Screen locking uses i3lock program.
 
